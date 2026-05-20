@@ -1,5 +1,8 @@
 body{
    display: flex;
     flex-direction: column;
+    padding:100px ;
+    background-color: red;
+    border-radius: 10px ;
     
 }
