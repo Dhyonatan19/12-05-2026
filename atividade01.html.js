@@ -5,13 +5,30 @@ elementoForm.addEventListener('submit', ()=> e.preventDefault()
  const elementoCor = document.getElementById('cor');
  elementoCor.addEventListener("input", (e) => {
  let corNova = e.target.value;
-  document.documentElement.style.setProperty("--primary-color", corNova);
- });
 
- document.addEventListener('DOMContentLoaded', ()=>
- {
-     const rootStyles =window.getComputedStyle(document.documentElement)
-   const_primaryColor = rootStyles.getPropertyValue('--primary-color').trim();
-  elementoCor.VALUE =
-      PRIMARYCOLOR;                    
- });
+ localStorage.setItem("primaryColor", corNova);
+  document.documentElement.style.setProperty("--primary-color", corNova);
+ })
+
+document.addEventListener('DOMContentLoaded', () => {
+
+ if (localStorage.getItem("primaryColor")) {
+
+  elementoCor.value = localStorage.getItem("primaryColor");
+
+  document.documentElement.style.setProperty(
+      "--primary-color",
+      elementoCor.value
+  );
+
+
+  const rootStyles = window.getComputedStyle(document.documentElement);
+
+  const primaryColor = rootStyles
+      .getPropertyValue("--primary-color")
+      .trim();
+
+  elementoCor.value = primaryColor;
+ }
+
+});
